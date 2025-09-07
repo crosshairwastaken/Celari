@@ -4,6 +4,9 @@ const fnConfig = {
   devtool: false, 
   name: "client",
   target: "web",
+  resolve: {
+    extensions: ['.js', '.mjs', '.jsx', '.ts', '.tsx', '.json'], 
+  },
   entry: {
     functions: "./src/client/entry.ts",
   },

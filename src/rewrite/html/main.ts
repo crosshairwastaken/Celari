@@ -3,6 +3,7 @@ import serialize from "dom-serializer";
 
 import rewriteURL from "../lib/url";
 import $config from "../../config";
+
 function getOrigin(url: any) {
   if (!url.pathname.startsWith($config.prefix)) {
     return false;
@@ -43,7 +44,7 @@ function rewriteHTML(html: string, url: any) {
   targets.forEach((el) => {
     Object.keys(el.attribs).forEach((a) => {
       if (attrToRewrite.has(a)) {
-        el.attribs[`data-orig-${a}`] = el.attribs[a]
+        el.attribs[`celari-origattr-${a}`] = el.attribs[a]
         el.attribs[a] = rewriteURL(el.attribs[a], base.origin);
       }
     });
