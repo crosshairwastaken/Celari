@@ -1,1 +1,1 @@
-import "./Element.prototype.ts"
+import "./Element.prototype.ts";
