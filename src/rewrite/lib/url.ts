@@ -15,13 +15,13 @@ function rewriteURL(url, base) {
   ) {
     return trimmed;
   }
-  if (
+  if ( // by the way this is really retarded
     trimmed.toLowerCase().startsWith("data:") &&
     !trimmed.toLowerCase().startsWith("data:image/")
   ) {
     return "#";
   }
-  if (trimmed.startsWith($config.preifx)) {
+  if (trimmed.startsWith($config.prefix)) {
     return trimmed;
   }
 

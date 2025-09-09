@@ -3,10 +3,12 @@
 import rewriteURL from "../rewrite/lib/url";
 import $config from "../config";
 
+
+// typescript...
 interface patchRegistry {
   elements: Function[];
   properties: string[];
-  handler: "url" | "srcset" | "delete" | "window";
+  handler: "url" | "html" | "delete" | "window";
 }
 
 function getOrigin(url: any) {
@@ -68,7 +70,7 @@ let registry: patchRegistry[] = [
   {
     elements: [HTMLImageElement, HTMLSourceElement],
     properties: ["srcset"],
-    handler: "srcset",
+    handler: "html",
   },
   {
     elements: [HTMLScriptElement],
@@ -96,7 +98,7 @@ registry.forEach(entry => {
         },
         set: descriptor.set ? new Proxy(descriptor.set!, {
           apply(target: Function, thisArg: any, args: any[]) {
-            thisArg.setAttribute(`celari-origattr${property}`, args[0])
+            thisArg.setAttribute(`celari-origattr-${property}`, args[0])
             let rewritten = rewriteValue(args[0])
             return Reflect.apply(target, thisArg, [rewritten])
           }
