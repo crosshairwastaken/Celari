@@ -50,10 +50,10 @@ const routeCelari = async function (request: any) {
     }
     return fetch(request);
   } catch (e) {
-    // TODO - custom err page impl
-    return new Response("Fetch failed: " + e, {
+    // you get the error data from the page hash
+    return new Response(`<iframe src="${$config.errorPageUrl}#${encodeURIComponent(e)}" height=100% width=100%></iframe>`, {
       status: 500,
-      headers: { "Content-Type": "text/plain" },
+      headers: { "Content-Type": "text/html" },
     });
   }
 };

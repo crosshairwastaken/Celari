@@ -1,5 +1,5 @@
 <html>
-    <script src="celari.config.js"></script>
+    <script src="/celari.config.js"></script>
     <script src="/baremux/index.js"></script>
     <script src="/epoxy/index.js"></script>
 
@@ -18,7 +18,7 @@
         navigator.serviceWorker.register('/sw.js', { scope: '/' })
         .then(() => navigator.serviceWorker.ready)
         .then(() => {
-            document.body.innerHTML = `<iframe src="${__celari__$config.prefix}https://torproject.org" height=100% width=100%></iframe>`;
+            document.body.innerHTML = `<iframe src="${__celari__$config.prefix}${__celari__$config.encodeUrl("https://example.com")}" height=100% width=100%></iframe>`;
         });
 
     </script>

@@ -51,9 +51,9 @@ function rewriteHTML(html: string, url: any) {
   });
 
   let stringed = serialize(dom);
-  // slot that config in
+  // slot that config in 
   return stringed.replace(
-    /<head(\s*[^>]*)?>/,
+    /<head(\s*[^>]*)?>/, 
     (match) => `${match}\n<script src="${$config.configUrl}"></script><script src="${$config.clientUrl}"></script>`,
   );
 }
