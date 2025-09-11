@@ -2,12 +2,12 @@
 import $config from "../config";
 import { BareClient } from "@mercuryworkshop/bare-mux";
 import { rewriteHTML } from "../rewrite/html/main";
-
+let client: any;
 const routeCelari = async function (request: any) {
   try {
     const url = new URL(request.url);
     if (url.pathname.startsWith($config.prefix)) {
-      const client = new BareClient();
+      client = new BareClient();
 
       const targetUrl = $config.decodeUrl(
         url.pathname.slice($config.prefix.length),
